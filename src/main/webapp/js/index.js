@@ -1,152 +1,72 @@
-/**
-* 这是一个制造雪花的函数
-* ＊＊*＊＊＊*＊＊＊*＊＊*＊
-*＊*＊＊＊＊*＊*＊**＊＊*＊＊＊*＊
-**＊＊＊*＊＊＊＊＊*＊*＊*＊
-**＊*＊＊*＊*＊＊*＊＊＊＊*＊
-**＊*＊＊＊*＊*＊＊＊＊＊＊
-*  好了玩够了( ' – ' )
-*
-* 纯手打 版权©所有伯爵科技
-*
-* author:ninico
-*/
-
 (function(){
 
-	var canvas = document.getElementById("logo");
-	var ctx = canvas.getContext("2d");
-	var canvasWidth = window.innerWidth;
-	var canvasHeight = canvas.height;
-	var logoUrl = "img/logo.png"
-	var logoImg = document.createElement("img");
-	var smokeImg = document.createElement("img");
-	var backgroundImg = document.createElement("img");
-	var backgroundUrl = "img/background.jpg"
-	var smokeUrl = "img/ParticleSmoke.png";
-	var smokeNum = 150;
-	var smokes = [];
+	var getElement = function(id){
 
-	smokeImg.src = smokeUrl;
-	logoImg.src = logoUrl;
-	backgroundImg.src = backgroundUrl;
+		return document.getElementById(id).value;
+	}
 
+	var checkout = function(){
 
+	}
 
-	canvas.width = canvasWidth;
+	var getForm = function(){
 
-	var initCanvas = function(){
+		var name = getElement("name");
+		var classVal = getElement("class");
+		var phone = getElement("phone");
+		var note = getElement("note");
 
-		for(var i = 0; i < smokeNum ; i++){
-
-			var smokeObj = new Smoke();
-			smokeObj.init();
-
-
-			smokes.push(smokeObj);
+		params = {
+			"userName" : name,
+			"userClass" : classVal,
+			"phoneNumber" : phone,
+			"saying" : note
 		}
 
-		gameLoop();
-	}
-
-	var gameLoop = function(){
-
-		setTimeout(arguments.callee,100);
-		drawBackground();
-	}
-
-	var drawBackground = function(){
-
-
-		ctx.fillStyle = "#f9f2d6";
-		ctx.fillRect(0,0,canvasWidth,canvasHeight);
-		// ctx.drawImage(backgroundImg,(600-canvasWidth)/2,0,canvasWidth,canvasHeight,0,0,canvasWidth,canvasHeight);
-		ctx.drawImage(logoImg,10,10,200,50);
-
-		drawSmoke();
+		return params;
 
 	}
 
-	var drawSmoke = function(){
+	var createUrl = function(obj){
 
-		for(var i = 0,len = smokes.length; i < len ; i++){
+		var url = "http://localhost:8080/apply/apply.action?";
 
-			smokes[i].drawSelf();
-			smokes[i].update();
+		for(var p in obj){
+
+			url += (p + "=" + obj[p] + "&");
+
 		}
+
+		url = url.split(0,-1);
+
+		return url;
 	}
 
-	var Smoke = function(){
-		this.x = 0;
-		this.y = 0;
-		this.z = 0;
 
-		this.xSpd = 0;
-		this.ySpd = 0;
-	}
+	var submit = function(){
 
-    Smoke.prototype = {
-		constructor:Smoke,
-		init:function(){
+		var params = getForm();
+		var url = createUrl(params);
 
-			var flag = Math.random()*1 > 0.3?1:-1;
-			var z = Distribution();
-			var ySpd = z;
+		var xhr = new XMLHttpRequest();
 
-			if(z>22){
+		xhr.onreadystatechange= function(){
 
-				ySpd *= 10;
-			}else if(z>14){
-				ySpd *=5;
+			if(xhr.readyState == 4){
+
+				console.log("ninico");
 			}
-
-			this.x = Math.random()*canvasWidth;
-			this.y = -Math.random()*canvasHeight;
-			this.z = z;
-			this.xSpd = flag*Math.random()*3;
-			this.ySpd = ySpd;
-			this.zSpd = 0;
-		},
-		drawSelf:function(){
-
-			ctx.drawImage(smokeImg,this.x,this.y,this.z,this.z)
-		},
-		update:function(){
-
-			this.x += this.xSpd;
-			this.y += this.ySpd*0.2;
-			this.z += this.zSpd;
-
-			if(Math.abs(this.x) >= canvasWidth + 50 || Math.abs(this.y) >= canvasHeight + 50){
-				this.init();
-			}
-
-			if(this.z > 30 || this.z < 0){
-
-				this.zSpd = -this.zSpd;
-			}
-
 		}
+
+
+	    xhr.open("GET",url,true);
+	    xhr.send(null);
 
 	}
 
-	var Distribution = function(){
+	document.getElementById("submit").onclick = function(){
 
-		var flag = Math.random();
-
-		if(flag < 0.05){
-
-			return Math.random()*7 + 22;
-		}else if(flag < 0.7){
-			return Math.random()*7 + 6;
-		}else if(flag < 0.9){
-			return Math.random()*7 + 16;
-		}else{
-			return Math.random()*7 + 0;
-		}
-		
+		submit();
 	}
 
-	initCanvas();
-
-})();
+ })();
