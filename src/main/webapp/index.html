@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>伯爵科技移动web小站</title>
+	<meta charset="utf-8">
+	<meta content="user-scalable=no ,width=device-width, initial-scale=1.0" name="viewport" />
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+<body>
+	<header>
+		<canvas id="logo" height="100px"></canvas>
+	</header>
+
+	<section id="container">
+		<nav>
+			<ul>
+				<li class="active">招新报名表</li>
+				<li>招新介绍</li>
+				<li>新手学习路径</li>
+			</ul>
+		</nav>
+	<!-- 一个没有啥用的form标签 -->
+		<section class="content">
+			<h2 class="form-title">伯爵科技2016年招新报名表</h2>
+			<h3 class="form-note">(以下带<span>*</span>的为必填)</h3>
+			<form action="apply.action" method="post">
+				<div class="input-group">
+					<label for="name">*</label>
+					<input type="text" name="userName" id="name" placeholder="姓名"/>
+				</div>
+				<div class="input-group">
+					<label for="class">*</label>
+					<input type="text" name="userClass" id="class" placeholder="班级"/>
+				</div>
+				<div class="input-group">
+					<label for="phone">*</label>
+					<input type="text" name="phoneNumber" id="phone" placeholder="联系电话"/>
+				</div>
+				<div class="input-group">
+					<input type="text" name="saying" id="note" placeholder="你想说点啥"/>
+				</div>
+				<div class="input-group">
+					<input type="submit" />
+				</div>
+			</form>
+		</section>
+		
+	</section>
+
+	<footer>
+		Copyright © 2015-2016 EarlTech
+	</footer>	
+
+	<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>
