@@ -1,29 +1,29 @@
 body{
-	background: #f2f2f2;
-	min-height: 100%;
+    background: #f2f2f2;
+    min-height: 100%;
 }
 
 nav {
-	margin-left: 2%;
+    margin-left: 2%;
     /*margin-top: -37px;
     position: relative;*/
 }
 
 nav ul li {
-	display: inline-block;
+    display: inline-block;
     height: 25px;
     padding: 1% 2%;
     background: #f2f2f2;
 }
 
 nav ul li.active {
-	background: #fff;
-	border: 1px solid #f2f2f2;
-	border-bottom: none;
+    background: #fff;
+    border: 1px solid #f2f2f2;
+    border-bottom: none;
 }
 
 #container {
-	position: relative;
+    position: relative;
     margin-top: -37px;
     background: #eee;
     min-height: 100%;
@@ -31,43 +31,43 @@ nav ul li.active {
 }
 
 .content {
-	padding-top: 50px;
+    padding-top: 50px;
     background: #fff;
     border-radius: 5px;
 }
 
 #container  form{
-	margin-top: 30px;
-	padding: 0 8%;
-	text-align: center;
+    margin-top: 30px;
+    padding: 0 8%;
+    text-align: center;
 }
 
 #container .form-title {
-	    font-size: 1em;
+        font-size: 1em;
     text-align: center;
 }
 
 #container .form-note {
-	font-size: 0.6em;
+    font-size: 0.6em;
     color: #C3C2C2;
     text-align: center;
 }
 
 #container .form-note span {
-	color: red;
+    color: red;
 }
 
 #container form .input-group {
-	margin-top: 20px;
+    margin-top: 20px;
 }
 
 #container form .input-group label {
-	color: red;
-	margin-left: -11px;
+    color: red;
+    margin-left: -11px;
 }
 
 #container form input {
-	border: 1px solid #CCC;
+    border: 1px solid #CCC;
     padding: 2%;
     width: 80%;
     border-radius: 3px;
@@ -75,9 +75,41 @@ nav ul li.active {
     text-indent: 5px;
 }
 
-#container form input[type=submit]{
-	    margin-top: 25px;
-    background: #E87D26;
+#container form .input-group span.error {
+    display: block;
+    content: "";
+    border: 1px solid red;
+    /*height: 23px;*/
+    color: red;
+    position: absolute;
+    padding: 2px 5px;
+    border-radius: 5px;
+    font-weight: 600;
+    margin-top: -40px;
+    margin-left: 52%;
+    opacity: 0;
+    -webkit-transition:1s;
+    background: #fff;
+
+}
+
+#container form .input-group .error::after {
+    display: block;
+    content: "";
+    width: 5px;
+    height: 5px;
+    border: 1px solid red;
+    border-color: red red transparent transparent;
+    background: #fff;
+    transform: rotateZ(135deg);
+    position: absolute;
+    margin-top: -1px;
+}
+
+#container form #submit{
+    margin-top: 25px;
+    /*background: #E87D26;*/
+    background: #C5C5C5;
     border: none;
     color: #fff;
     width: 86%;
@@ -85,7 +117,7 @@ nav ul li.active {
 }
 
 footer {
-	position: relative;
+    position: relative;
     width: 100%;
     text-align: center;
     font-size: 0.5em;
