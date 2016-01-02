@@ -30,6 +30,20 @@ public class HttpUserActionTest {
 		System.out.println(sendHttpRequest);
 	}
 	
+	@Test
+	public void testDeleAll() {
+		String targetURL = "http://localhost:8080/apply/deleAll.action";
+		
+		PostMethod filePost = new PostMethod(targetURL);
+		
+		Part[] parts = {
+
+		};
+		String sendHttpRequest = sendHttpRequest(filePost, parts);
+		System.out.println(sendHttpRequest);
+	
+	}
+	
 	
 	
 	

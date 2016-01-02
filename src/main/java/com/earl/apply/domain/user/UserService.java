@@ -10,4 +10,6 @@ public interface UserService extends BaseService<UserPo>{
 
 	UserPo getUser(UserPo model);
 
+	void deleAll();
+
 }

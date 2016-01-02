@@ -2,6 +2,7 @@ package com.earl.apply.domain.base;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -71,20 +72,26 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		} catch (Exception e) {
 			getSession().getTransaction().rollback();
 			e.printStackTrace();
-		} finally {
-			getSession().getTransaction().commit();
-		}
+		} 
 		System.out.println("退出update方法");
 	}
 
 	// 根据ID删除对象
 	@Override
 	public void deleteById(Long id) {
-		getSession().beginTransaction();
-		delete(get(id));
-		getSession().getTransaction().commit();
+		System.out.println("进入dele方法");
+		try {
+//			getSession().beginTransaction();
+			delete(get(id));
+		} catch (Exception e) {
+			getSession().getTransaction().rollback();
+			e.printStackTrace();
+		} finally {
+			getSession().getTransaction().commit();
+		}
+		System.out.println("退出dele方法");
 	}
-
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public T get(Long id) {
@@ -98,10 +105,18 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> findAll() {
-		getSession().beginTransaction();
-		String hql = "from " + clazz.getSimpleName();
-		List<T> list = getSession().createQuery(hql).list();
-		getSession().getTransaction().commit();
+		System.out.println("进入findAll方法");
+		List<T> list = new ArrayList<T>();
+		try {
+			getSession().beginTransaction();
+			String hql = "from " + clazz.getSimpleName();
+			list = getSession().createQuery(hql).list();
+			getSession().getTransaction().commit();
+		} catch (Exception e) {
+			getSession().getTransaction().rollback();
+			e.printStackTrace();
+		}
+		System.out.println("退出findAll方法");
 		return list;
 	}
 

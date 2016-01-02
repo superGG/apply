@@ -29,7 +29,7 @@
 
 	var createUrl = function(obj){
 
-		var url = "http://localhost:8080/apply/apply.action?";
+		var url = "apply.action?";
 
 		for(var p in obj){
 
@@ -37,7 +37,7 @@
 
 		}
 
-		url = url.split(0,-1);
+		url = url.slice(0,-1);
 
 		return url;
 	}

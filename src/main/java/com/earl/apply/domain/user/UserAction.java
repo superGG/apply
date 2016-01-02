@@ -1,5 +1,6 @@
 package com.earl.apply.domain.user;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,12 +27,10 @@ public class UserAction extends BaseAction<UserPo> {
 	//下面开始写action
 
 
-	public String apply() {
+	public String apply() throws UnsupportedEncodingException {
 		dataMap.clear();
-		
 		dataMap.put("resultInfo", "  ");
 		dataMap.put("result", false);
-		
 		userServer = new UserServiceImpl();
 		Boolean result = userServer.saveUser(model);
 		System.out.println("-----------------------");
@@ -52,7 +51,10 @@ public class UserAction extends BaseAction<UserPo> {
 		return "success";
 	}
 
-
+	public void deleAll() {
+		userServer = new UserServiceImpl();
+		userServer.deleAll();
+	}
 
 
 }

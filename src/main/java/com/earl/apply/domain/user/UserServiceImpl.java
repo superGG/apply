@@ -39,6 +39,12 @@ public class UserServiceImpl extends BaseServiceImpl<UserPo> implements
 		return user;
 	}
 
+	@Override
+	public void deleAll() {
+		userDao = new UserDaoImpl();
+		userDao.deleteAll();
+	}
+
 
 
 }

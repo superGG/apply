@@ -68,8 +68,10 @@ public class UserPo{
 	public String toString() {
 		return "UserPo [userId=" + userId + ", userName=" + userName
 				+ ", phoneNumber=" + phoneNumber + ", userClass=" + userClass
-				+ "]";
+				+ ", saying=" + saying + "]";
 	}
+
+	
 
 	
 
