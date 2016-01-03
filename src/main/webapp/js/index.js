@@ -206,7 +206,7 @@
 
 					console.log(xhr.responseText);
 
-					var data = eval("(" + responseText + ")");
+					var data = eval("(" + xhr.responseText + ")");
 
 
 					if(data.result){
