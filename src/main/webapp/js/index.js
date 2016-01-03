@@ -211,6 +211,8 @@
 
 					if(data.result){
 
+						document.getElementById("page00").style.display = "block";
+						document.getElementById("page01").style.display = "none";
 
 					}
 				}
