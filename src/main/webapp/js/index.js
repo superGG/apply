@@ -214,8 +214,18 @@
 						document.getElementById("page00").style.display = "block";
 						document.getElementById("page01").style.display = "none";
 
+					}else{
+
+						document.getElementsByClassName("result-info")[0].innerHTML = data.resultInfo;
+						document.getElementById("result-info").src = "img/iconfont-error.png"
 					}
-				}
+
+				}else ｛
+
+					document.getElementsByClassName("result-info")[0].innerHTML = "服务器错误，请稍后再试！^_^||| ";
+					document.getElementById("result-info").src = "img/iconfont-error.png"
+
+				｝
 			}
 		}
 
