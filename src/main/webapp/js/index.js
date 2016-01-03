@@ -158,6 +158,7 @@
 		var classVal = getElement("class");
 		var phone = getElement("phone");
 		var note = getElement("note");
+		
 
 		params = {
 			"userName" : name,
@@ -165,6 +166,8 @@
 			"phoneNumber" : phone,
 			"saying" : note
 		}
+		
+		console.log(params);
 
 		return params;
 
@@ -188,7 +191,7 @@
 
 	var submit = function(){
 
-		initForm();
+		
 
 		var params = getForm();
 		var url = createUrl(params);
@@ -220,12 +223,13 @@
 						document.getElementById("result-info").src = "img/iconfont-error.png"
 					}
 
-				}else ｛
+				}else {
 
 					document.getElementsByClassName("result-info")[0].innerHTML = "服务器错误，请稍后再试！^_^||| ";
 					document.getElementById("result-info").src = "img/iconfont-error.png"
 
-				｝
+				}
+
 			}
 		}
 
@@ -234,6 +238,8 @@
 
 	    showShade();
 	    xhr.send(null);
+	    
+	    initForm();
 
 	}
 

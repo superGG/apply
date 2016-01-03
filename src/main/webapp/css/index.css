@@ -165,20 +165,20 @@ footer {
     opacity: 0.6;
 }
 
-.page00 {
+#page00 {
     text-align: center;
     display: none;
 }
 
-.page00 img {
+#page00 img {
     margin-top: 20px;
 }
 
-.page00 .page-nav {
+#page00 .page-nav {
     margin-top: 20px;
 }
 
-.page00 .page-nav a{
+#page00 .page-nav a{
     color: #2D9BB1;
     text-decoration: none;
     margin-right: 10px;
