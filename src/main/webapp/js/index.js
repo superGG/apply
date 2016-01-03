@@ -199,12 +199,28 @@
 
 			if(xhr.readyState == 4){
 
-				console.log("ninico");
+				hideShade();
+
+
+				if(xhr.status == 200){
+
+					console.log(xhr.responseText);
+
+					var data = eval("(" + responseText + ")");
+
+
+					if(data.result){
+
+
+					}
+				}
 			}
 		}
 
 
 	    xhr.open("GET",url,true);
+
+	    showShade();
 	    xhr.send(null);
 
 	}
@@ -224,6 +240,17 @@
 
 			checkoutAll();
 		});
+	}
+
+
+	var showShade = function(){
+
+		document.getElementsByClassName("shade")[0].style.display = "block";
+	}
+
+	var hideShade = function(){
+
+		document.getElementsByClassName("shade")[0].style.display = "none";
 	}
 
 
