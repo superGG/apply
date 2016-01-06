@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+        
+        
+<hibernate-mapping package="com.earl.apply.domain.user">
+    <class name="UserPo" table="user" dynamic-update="true" dynamic-insert="true">
+        <id name="userId" type="java.lang.Long">
+            <column name="userId" />
+            <generator class="native"></generator>
+        </id>
+        <property name="userName" type="java.lang.String" column="userName" />
+        <property name="phoneNumber" type="java.lang.String" column="phoneNumber" />
+        <property name="userClass" type="java.lang.String" column="userClass" />
+        <property name="saying" type="java.lang.String" column="saying" />
+    </class>
+</hibernate-mapping>

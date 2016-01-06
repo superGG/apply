@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+		<package name="apply" extends="json-default" namespace="/">
+		<interceptors>
+			<interceptor name="escapeInterceptor"
+				class="com.earl.apply.interceptor.EscapeInterceptor">
+			</interceptor>
+			<interceptor name="ipInterceptor"
+				class="com.earl.apply.interceptor.IpInterceptor">
+			</interceptor>
+			<interceptor-stack name="systemInterceptorStack">
+				<interceptor-ref name="ipInterceptor" />
+				<interceptor-ref name="escapeInterceptor" /> 
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="systemInterceptorStack"></default-interceptor-ref>
+		<action name="apply" 
+				class="com.earl.apply.domain.user.UserAction" 
+				method="apply">
+			<result  type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="bjkjxxjk"
+			class="com.earl.apply.domain.user.UserAction"
+			method="bjkexxcx">
+			<result  type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+	</package>
+</struts>
